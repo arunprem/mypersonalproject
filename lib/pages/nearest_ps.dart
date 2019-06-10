@@ -14,6 +14,17 @@ class _Nearest_psState extends State<Nearest_ps> {
   var location = new Location();
 
   Map<String, double> userLocation;
+  
+ @override
+  void initState() {
+
+    super.initState();
+    _getLocation().then((value) {
+      setState(() {
+        userLocation = value;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
