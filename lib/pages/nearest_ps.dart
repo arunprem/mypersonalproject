@@ -6,6 +6,7 @@ import 'package:location/location.dart';
 import 'package:flutter/services.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
+
 class Nearest_ps extends StatefulWidget {
   @override
   _Nearest_psState createState() => _Nearest_psState();
@@ -17,7 +18,7 @@ class _Nearest_psState extends State<Nearest_ps> {
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(37.42796133580664, -122.085749655962),
+    target: LatLng(10.8, 76.9),
     zoom: 14.4746,
   );
 
@@ -51,17 +52,25 @@ class _Nearest_psState extends State<Nearest_ps> {
           backgroundColor: Colors.blueGrey,
           title: new Text('Nearest Police Station'),
         ),
-      body:GoogleMap(
-        mapType: MapType.hybrid,
+      body: GoogleMap(
+        mapType: MapType.normal,
         initialCameraPosition: _kGooglePlex,
         onMapCreated: (GoogleMapController controller) {
           _controller.complete(controller);
         },
       ),
+      floatingActionButton: FloatingActionButton.extended(
+        onPressed: _goToTheLake,
+        label: Text('Go To PS!'),
+        icon: Icon(Icons.directions_boat),
+      ),
     );
 
   }
-
+  Future<void> _goToTheLake() async {
+    final GoogleMapController controller = await _controller.future;
+    controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
+  }
 
   Future<Map<String, double>> _getLocation() async {
     var currentLocation = <String, double>{};
