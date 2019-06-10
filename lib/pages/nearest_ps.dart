@@ -14,22 +14,24 @@ class Nearest_ps extends StatefulWidget {
 
 class _Nearest_psState extends State<Nearest_ps> {
   var location = new Location();
+  static Map<String, double> userLocation;
 
   Completer<GoogleMapController> _controller = Completer();
 
   static final CameraPosition _kGooglePlex = CameraPosition(
-    target: LatLng(10.8, 76.9),
-    zoom: 14.4746,
+
+    target: LatLng(10.8505, 76.2711),
+    zoom: 6.4746,
   );
 
   static final CameraPosition _kLake = CameraPosition(
       bearing: 192.8334901395799,
-      target: LatLng(37.43296265331129, -122.08832357078792),
-      tilt: 59.440717697143555,
+      target: LatLng(userLocation["latitude"], userLocation["longitude"]),
+      tilt: 10.440717697143555,
       zoom: 19.151926040649414);
 
 
-  Map<String, double> userLocation;
+
   
  @override
   void initState() {
@@ -68,6 +70,7 @@ class _Nearest_psState extends State<Nearest_ps> {
 
   }
   Future<void> _goToTheLake() async {
+   debugPrint(_kLake.toString());
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
