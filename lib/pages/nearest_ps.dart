@@ -70,7 +70,7 @@ class _Nearest_psState extends State<Nearest_ps> {
 
   }
   Future<void> _goToTheLake() async {
-   debugPrint(_kLake.toString());
+  // debugPrint(_kLake.toString());
     final GoogleMapController controller = await _controller.future;
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }
