@@ -91,7 +91,7 @@ class _Nearest_psState extends State<Nearest_ps> {
           onMapCreated: (GoogleMapController controller) {
             _controller.complete();
           },
-          markers: {psMarker}),
+          markers: {psMarker,psMarker2}),
     );
   }
 }
@@ -103,4 +103,13 @@ Marker psMarker = Marker(
   icon: BitmapDescriptor.defaultMarkerWithHue(
      BitmapDescriptor.hueBlue
   )
+);
+
+Marker psMarker2 = Marker(
+    markerId: MarkerId("Vanitha Police Station"),
+    position: LatLng(8.6095, 76.9568),
+    infoWindow: InfoWindow(title: "Museam Police Station"),
+    icon: BitmapDescriptor.defaultMarkerWithHue(
+        BitmapDescriptor.hueBlue
+    )
 );
