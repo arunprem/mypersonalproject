@@ -1,9 +1,6 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
-
 import 'package:location/location.dart';
-
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 class Nearest_ps extends StatefulWidget {
@@ -43,12 +40,13 @@ class _Nearest_psState extends State<Nearest_ps> {
       body: Stack(
         children: <Widget>[_googleMap(context)],
       ),
-      floatingActionButton: FloatingActionButton.extended(
-        onPressed: _goToTheLake,
-        tooltip: "get corrent location",
-        label: Text("My Locaiton"),
-        icon: Icon(Icons.my_location),
-      ),
+       floatingActionButton: new FloatingActionButton(
+        tooltip: "Add Item",
+        backgroundColor: Colors.redAccent,
+        child: new ListTile(
+          title: Icon(Icons.my_location),
+        ),
+        onPressed: _goToTheLake),
     );
   }
 
