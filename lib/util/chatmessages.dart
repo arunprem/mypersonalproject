@@ -22,7 +22,7 @@ class _ChatMessagesState extends State<ChatMessages>
   @override
   void initState() {
     super.initState();
-    print("*************************************1");
+
     _initChatbot();
   }
 
@@ -49,7 +49,10 @@ class _ChatMessagesState extends State<ChatMessages>
           reverse: true,
           itemCount: _messages.length,
           itemBuilder: (_, index) {
-            return Container(child: ChatMessageListItem(_messages[index]));
+            return Container(
+
+                child: ChatMessageListItem(_messages[index])
+            );
           }),
     );
   }
@@ -104,10 +107,11 @@ class _ChatMessagesState extends State<ChatMessages>
     _requestChatBot(value);
   }
 
-  var projectid = "flutter-dialogflow-sowrtc";
+  var projectid = "api-project-678867498702";
+
   _requestChatBot(String text) async {
     var dialogSessionId =
-        "projects/$projectid/agent/sessions/flutter-dialogflow";
+        "projects/$projectid/agent/sessions/api-project-678867498702";
     Map data = {
       "queryInput": {
         "text": {
@@ -124,8 +128,8 @@ class _ChatMessagesState extends State<ChatMessages>
     var result = resp.queryResult;
     print("222222222222 $resp");
     _addMessage(
-        name: "Chat Bot",
-        initials: "CB",
+        name: "Police Bot",
+        initials: "PB",
         bot: true,
         text: result.fulfillmentText);
   }

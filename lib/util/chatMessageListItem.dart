@@ -9,28 +9,32 @@ class ChatMessageListItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizeTransition(
+
       sizeFactor: CurvedAnimation(
           parent: chatMessage.animationController, curve: Curves.easeOut),
       child: Container(
         margin: EdgeInsets.symmetric(vertical: 8.0),
+
         child: Row(
           children: <Widget>[
+
             Padding(
-              padding: const EdgeInsets.only(left: 16.0),
+              padding: const EdgeInsets.only(right: 16.0),
               child: CircleAvatar(
-                child: Text(chatMessage.initials ?? "JA"),
+                child: Text(chatMessage.initials ?? "PA"),
                 backgroundColor: chatMessage.bot
                     ? Theme.of(context).accentColor
                     : Theme.of(context).highlightColor,
               ),
             ),
             Flexible(
+
                 child: Container(
-                    margin: EdgeInsets.only(left: 16.0),
+                    margin: EdgeInsets.only(right: 16.0),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: <Widget>[
-                        Text(chatMessage.name ?? "Jatinder Arora",
+                        Text(chatMessage.name ?? "Arunprem",
                             style: Theme.of(context).textTheme.subhead),
                         Container(
                             margin: const EdgeInsets.only(top: 5.0),

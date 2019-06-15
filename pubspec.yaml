@@ -62,7 +62,7 @@ flutter:
   #  - images/a_dot_ham.jpeg
 
   assets:
-
+    - "config/credentials.json"
     - asset/icons/nearestps.png
     - asset/icons/directory.png
     - asset/icons/notification.png
@@ -70,7 +70,8 @@ flutter:
     - asset/icons/cug.png
     - asset/icons/report.png
     - asset/icons/dlogo.png
-    - asset/cridentials.json
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
