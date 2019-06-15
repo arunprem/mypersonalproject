@@ -70,7 +70,7 @@ flutter:
     - asset/icons/cug.png
     - asset/icons/report.png
     - asset/icons/dlogo.png
-    - asset/credentials.json
+    - asset/cridentials.json
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
