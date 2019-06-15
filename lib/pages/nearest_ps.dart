@@ -43,11 +43,10 @@ class _Nearest_psState extends State<Nearest_ps> {
         title: new Text('Nearest Police Station'),
       ),
       body: Builder(
-          builder: (context) => Stack(children: <Widget>[
+          builder: (context) =>
+              Stack(children: <Widget>[
                 userLocation == null
-                    ? new Center(
-                        child: CircularProgressIndicator(),
-                      )
+                    ?_showEroor(context)
                     : _googleMap(context),
                 userLocation != null ? _buildContainer() : _showEroor(context)
               ])),
@@ -63,8 +62,14 @@ class _Nearest_psState extends State<Nearest_ps> {
 
   Widget _googleMap(BuildContext context) {
     return Container(
-      height: MediaQuery.of(context).size.height,
-      width: MediaQuery.of(context).size.width,
+      height: MediaQuery
+          .of(context)
+          .size
+          .height,
+      width: MediaQuery
+          .of(context)
+          .size
+          .width,
       child: GoogleMap(
           mapType: MapType.normal,
           myLocationEnabled: true,
@@ -81,22 +86,38 @@ class _Nearest_psState extends State<Nearest_ps> {
 
   Widget _showEroor(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+
+
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        RaisedButton(
-            child: Text("Get My Location"),
-            onPressed: () {
-              Scaffold.of(context).showSnackBar(SnackBar(
-                content: Text("Please enable the Location Service"),
-                duration: Duration(seconds: 3),
-              ));
-            })
+        Center(child:new Text("Can't get your Location",style: TextStyle(
+          color: Colors.grey,
+          fontSize: 16.5,
+          fontWeight: FontWeight.bold
+        ),)),
+        Center(child: CircularProgressIndicator()),
+        Center(
+            child: RaisedButton.icon(icon: Icon(Icons.my_location,color: Colors.white,),
+                label: Text(
+                  "Get My Location", style: TextStyle(color: Colors.white),),
+                color: Colors.blue,
+                onPressed: () {
+                  if (userLocation == null) {
+                    Scaffold.of(context).showSnackBar(SnackBar(
+                      content: Text("Please enable the Location Service"),
+                    ));
+                    // Navigator.pop(context, 'Please enable your location!');
+                  } else {
+                    _getLocation().then((value) {
+                      setState(() {
+                        userLocation = value;
+                      });
+                    });
+                  }
+                }))
       ],
     );
-  }
-
-  void showInSnackBar(String value) {
-    Scaffold.of(context).showSnackBar(new SnackBar(content: new Text(value)));
   }
 
   Marker psMarker = Marker(

@@ -18,7 +18,7 @@ environment:
 
 dependencies:
   flutter_map: any
-  google_maps_flutter: ^0.5.16
+
 
 
 
@@ -31,6 +31,12 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
   location: ^1.4.0
+  tts: ^1.0.1
+  googleapis: any
+  googleapis_auth: any
+  google_maps_flutter: ^0.5.16
+  flutter_dialogflow: ^0.1.2
+
 
 
 
@@ -64,6 +70,8 @@ flutter:
     - asset/icons/cug.png
     - asset/icons/report.png
     - asset/icons/dlogo.png
+    - asset/credentials.json
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
