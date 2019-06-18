@@ -43,10 +43,9 @@ class _Nearest_psState extends State<Nearest_ps> {
         title: new Text('Nearest Police Station'),
       ),
       body: Builder(
-          builder: (context) =>
-              Stack(children: <Widget>[
+          builder: (context) => Stack(children: <Widget>[
                 userLocation == null
-                    ?_showEroor(context)
+                    ? _showEroor(context)
                     : _googleMap(context),
                 userLocation != null ? _buildContainer() : _showEroor(context)
               ])),
@@ -62,14 +61,8 @@ class _Nearest_psState extends State<Nearest_ps> {
 
   Widget _googleMap(BuildContext context) {
     return Container(
-      height: MediaQuery
-          .of(context)
-          .size
-          .height,
-      width: MediaQuery
-          .of(context)
-          .size
-          .width,
+      height: MediaQuery.of(context).size.height,
+      width: MediaQuery.of(context).size.width,
       child: GoogleMap(
           mapType: MapType.normal,
           myLocationEnabled: true,
@@ -86,21 +79,26 @@ class _Nearest_psState extends State<Nearest_ps> {
 
   Widget _showEroor(BuildContext context) {
     return Column(
-
-
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
-        Center(child:new Text("Can't get your Location",style: TextStyle(
-          color: Colors.grey,
-          fontSize: 16.5,
-          fontWeight: FontWeight.bold
-        ),)),
+        Center(
+            child: new Text(
+          "Can't get your Location",
+          style: TextStyle(
+              color: Colors.grey, fontSize: 16.5, fontWeight: FontWeight.bold),
+        )),
         Center(child: CircularProgressIndicator()),
         Center(
-            child: RaisedButton.icon(icon: Icon(Icons.my_location,color: Colors.white,),
+            child: RaisedButton.icon(
+                icon: Icon(
+                  Icons.my_location,
+                  color: Colors.white,
+                ),
                 label: Text(
-                  "Get My Location", style: TextStyle(color: Colors.white),),
+                  "Get My Location",
+                  style: TextStyle(color: Colors.white),
+                ),
                 color: Colors.blue,
                 onPressed: () {
                   if (userLocation == null) {
@@ -109,8 +107,8 @@ class _Nearest_psState extends State<Nearest_ps> {
                     ));
                     // Navigator.pop(context, 'Please enable your location!');
                   } else {
-                    _getLocation().then((value) {
-                      setState(() {
+                    setState(() {
+                      _getLocation().then((value) {
                         userLocation = value;
                       });
                     });
